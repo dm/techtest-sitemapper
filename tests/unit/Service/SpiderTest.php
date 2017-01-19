@@ -36,6 +36,15 @@ class SpiderTest extends \PHPUnit_Framework_TestCase
      */
     protected $spider;
 
+    public function testInitialize()
+    {
+        $guzzle = $this->getGuzzle();
+        $client = new Client();
+        $client->setClient($guzzle);
+        $spider = new Spider($client);
+        $this->isInstanceOf('\Sitemapper\Service\Spider', $spider);
+    }
+
     /**
      * Mock Guzzle responses in spider order we're expecting
      *
