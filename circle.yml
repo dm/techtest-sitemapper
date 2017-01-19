@@ -1,0 +1,14 @@
+machine:
+  php:
+    version: 7.0.7
+
+dependencies:
+  cache_directories:
+    - vendor
+    - ~/.composer/cache
+  override:
+    - make install
+
+test:
+  override:
+    - make test

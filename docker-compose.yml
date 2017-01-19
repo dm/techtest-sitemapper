@@ -1,0 +1,14 @@
+version: '2'
+
+services:
+    workdir:
+        image: tianon/true
+        volumes:
+            - "./:/usr/src/sitemapper"
+
+    backend:
+        build: ./docker/backend
+        volumes_from:
+            - workdir
+        depends_on:
+            - workdir
