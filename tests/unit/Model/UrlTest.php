@@ -31,18 +31,20 @@ class UrlTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Sitemapper\Exception\InvalidUrlException
+     * Assert new empty initialization throws InvalidUrlException
      */
     public function testInitializeInvalidUrl()
     {
+        $this->expectException(InvalidUrlException::class);
         new Url('', true);
     }
 
     /**
-     * @expectedException  \Sitemapper\Exception\InvalidUrlException
+     * Assert new path only initialization throws InvalidUrlException
      */
     public function testInitializeInvalidUrlWithPath()
     {
+        $this->expectException(InvalidUrlException::class);
         new Url('/login/', true);
     }
 
