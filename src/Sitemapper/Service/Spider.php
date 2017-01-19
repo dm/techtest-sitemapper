@@ -120,7 +120,7 @@ class Spider
      *
      * @param Url $url
      * @param $pages
-     * @return true
+     * @throws \Exception
      */
     private function crawler(Url $url, &$pages)
     {

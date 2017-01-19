@@ -77,31 +77,49 @@ class Url
         return $this->url;
     }
 
+    /**
+     * @param $url
+     */
     public function setUrl($url)
     {
         $this->url = $url;
         $this->setHost();
     }
 
+    /**
+     * @return bool
+     */
     public function isSameHost() {
         return self::$same_host === $this->getDomainFromUrl($this->getUrl());
     }
 
+    /**
+     * @return string
+     */
     public function getHost()
     {
         return $this->host;
     }
 
+    /**
+     * @return string
+     */
     public function getSameHost()
     {
         return self::$same_host;
     }
 
+    /**
+     * @param bool $url
+     */
     public function setHost($url = false)
     {
         $this->host = $this->getDomainFromUrl($url);
     }
 
+    /**
+     * @param bool $url
+     */
     public function setSameHost($url = false)
     {
         if ($url !== false) {
@@ -112,6 +130,9 @@ class Url
         self::$same_host = $url;
     }
 
+    /**
+     * @param bool $url
+     */
     public function setUnparsedUrl($url = false)
     {
         if ($url === false) {
@@ -121,6 +142,10 @@ class Url
         self::$unparsedUrl = $parsed_url;
     }
 
+    /**
+     * @param bool $url
+     * @return bool
+     */
     public function getDomainFromUrl($url = false)
     {
         if ($url === false) {
@@ -133,6 +158,10 @@ class Url
         return $parsed_url['host'];
     }
 
+    /**
+     * @param bool $url
+     * @return string
+     */
     public function getFullPathFromUrl($url = false)
     {
         if ($url === false) {
@@ -145,6 +174,10 @@ class Url
         return "$path$query$fragment";
     }
 
+    /**
+     * @param $parsed_url
+     * @return string
+     */
     private function unparseUrl($parsed_url)
     {
         $scheme = isset($parsed_url['scheme']) ? $parsed_url['scheme'] . '://' : '';
