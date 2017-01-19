@@ -4,6 +4,19 @@ Implement a quick crawler and sitemap generator.
 
 Created for a quick technical test.
 
+Will grab a pseudo-random Neocities site by default (It's the future of the Interwebs, _make the web fun again_!!!)
+
+
+## Easy run
+
+Assumptions:
+ * Running on a \*nix based OS
+ * [Docker is installed](https://docs.docker.com/engine/installation/)
+ * Grab a nice cup of coffee
+ * `make`
+ * ???
+ * Profit!
+
 
 ## Makefile
 
