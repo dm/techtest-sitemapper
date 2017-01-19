@@ -46,20 +46,7 @@ class Url
             self::$unparsedUrl = [];
         }
 
-        $url = filter_var($url, FILTER_SANITIZE_URL);
-        if (false === filter_var($url, FILTER_VALIDATE_URL)) {
-            if (empty(self::$unparsedUrl)) {
-                throw new InvalidUrlException();
-            } else {
-                $unparsedUrl = self::$unparsedUrl;
-                if (substr($url, 0, 1) === '/') {
-                    $unparsedUrl['path'] = '/' . ltrim($url, '/');
-                } else {
-                    $unparsedUrl['path'] = $unparsedUrl['path'] . $url;
-                }
-                $url = $this->unparseUrl($unparsedUrl);
-            }
-        }
+        $url = $this->ensureValid($url);
 
         $this->url = $url;
         $this->setHost();
@@ -115,6 +102,30 @@ class Url
     public function setHost($url = false)
     {
         $this->host = $this->getDomainFromUrl($url);
+    }
+
+    /**
+     * @param $url
+     * @return mixed|string
+     */
+    private function ensureValid($url)
+    {
+        $url = filter_var($url, FILTER_SANITIZE_URL);
+        if (false === filter_var($url, FILTER_VALIDATE_URL)) {
+            if (empty(self::$unparsedUrl)) {
+                throw new InvalidUrlException();
+            } else {
+                $unparsedUrl = self::$unparsedUrl;
+                if (substr($url, 0, 1) === '/') {
+                    $unparsedUrl['path'] = '/' . ltrim($url, '/');
+                } else {
+                    $unparsedUrl['path'] = $unparsedUrl['path'] . $url;
+                }
+                return $this->unparseUrl($unparsedUrl);
+            }
+        }
+
+        return $url;
     }
 
     /**

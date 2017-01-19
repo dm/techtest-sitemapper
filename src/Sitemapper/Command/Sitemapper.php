@@ -62,7 +62,7 @@ class Sitemapper extends Command
     {
         $output->writeln('#### Generating Sitemap ####');
         $urlStr = $input->getArgument('url') ? $input->getArgument('url') : $this->spider->getRandomNeocities();
-        $output->writeln('Domain: ' . $urlStr);
+        $output->writeln('For domain: ' . $urlStr);
         $url = new Url($urlStr);
         $pages = $input->getOption('pages') ?: self::LIMIT_PAGES;
         $this->spider->setPages($pages);
