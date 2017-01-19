@@ -7,7 +7,10 @@ Created for a quick technical test.
 
 ## Makefile
 
- * Tests: `make docker-test`
+ * Tests (Docker): `make docker-test`
+ * Tests: `make test`
+ * Run (Docker): `make docker-run URL=https://2bit.neocities.org/`
+ * Run: `make run URL=https://2bit.neocities.org/`
 
 
 ## Implementation
@@ -28,4 +31,5 @@ Created for a quick technical test.
 
 ## Limitation
 
- * Hard limit on 2 hours for the exercise :(
+ * Hard limit on 2 hours, which is severely limiting.
+ * Will take the "please don’t spend much more than that", and have a little leeway...

@@ -13,4 +13,4 @@ COPY php/php.ini /usr/local/etc/php/
 
 WORKDIR /usr/src/sitemapper
 
-CMD [ "echo", "Success!" ]
+CMD [ "php", "./bin/app" ]

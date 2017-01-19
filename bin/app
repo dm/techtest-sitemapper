@@ -1,0 +1,15 @@
+#!/usr/bin/env php
+<?php
+
+require __DIR__ . '/../vendor/autoload.php';
+
+use Sitemapper\Command\Sitemapper;
+use Symfony\Component\Console\Application;
+
+$app = new Application();
+
+$sitemapperCommand = new Sitemapper();
+$app->add($sitemapperCommand);
+$app->setDefaultCommand($sitemapperCommand->getName());
+
+$app->run();

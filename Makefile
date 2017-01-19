@@ -2,16 +2,26 @@
 .PHONY: help
 .SILENT:
 
+URL?=""
+PAGES?=100
+
 ## Make and run app in Docker
 all: docker-install docker-run
+
 
 ## Build Docker compose
 docker-build:
 	docker-compose build
 
+
 ## Run app in Docker
 docker-run:
-	docker-compose run backend
+	docker-compose run backend ./bin/app sitemapper --pages $(PAGES) -- $(URL)
+
+## Run locally
+run: install
+	./bin/app sitemapper -- $(URL) --pages $(PAGES)
+
 
 # Helper to run interactively
 docker-bash:
@@ -26,7 +36,9 @@ docker-test: docker-install
 test: install
 	php vendor/bin/phpunit -c tests/phpunit.xml
 
+
 # Helpers
+
 
 ## Install dependencies (Docker)
 docker-install: docker-build
@@ -41,6 +53,10 @@ install: composer.phar
 # Install composer (Makefile lockfile ./composer.phar)
 composer.phar:
 	curl https://getcomposer.org/installer | php -- --quiet
+
+## Cleanup composer and vendor folder
+clean: docker-stop
+	rm -rf composer.phar vendor/
 
 
 ## Prints this help :D
