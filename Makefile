@@ -5,7 +5,7 @@
 URL?=""
 PAGES?=100
 
-## Make and run app in Docker
+## Install deps and run app (Docker)
 all: docker-install docker-run
 
 
@@ -14,16 +14,16 @@ docker-build:
 	docker-compose build
 
 
-## Run app in Docker
+## Run app (Docker)
 docker-run:
 	docker-compose run backend ./bin/app sitemapper --pages $(PAGES) -- $(URL)
 
-## Run locally
+## Run app (local)
 run: install
-	./bin/app sitemapper -- $(URL) --pages $(PAGES)
+	./bin/app sitemapper --pages $(PAGES) -- $(URL)
 
 
-# Helper to run interactively
+# Helper to run docker interactively (bash)
 docker-bash:
 	docker-compose run backend bash
 
@@ -32,7 +32,7 @@ docker-bash:
 docker-test: docker-install
 	docker-compose run backend ./vendor/bin/phpunit -c tests/phpunit.xml
 
-## Runs unit tests
+## Runs unit tests (local)
 test: install
 	php vendor/bin/phpunit -c tests/phpunit.xml
 

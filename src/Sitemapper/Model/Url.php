@@ -118,8 +118,10 @@ class Url
                 $unparsedUrl = self::$unparsedUrl;
                 if (substr($url, 0, 1) === '/') {
                     $unparsedUrl['path'] = '/' . ltrim($url, '/');
-                } else {
+                } else if (!empty($unparsedUrl['path'])) {
                     $unparsedUrl['path'] = $unparsedUrl['path'] . $url;
+                } else {
+                    $unparsedUrl['path'] = $url;
                 }
                 return $this->unparseUrl($unparsedUrl);
             }

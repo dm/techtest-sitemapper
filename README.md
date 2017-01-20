@@ -1,11 +1,15 @@
 # Sitemapper
 
-Implement a quick crawler and sitemap generator.
+Implement a quick crawler and sitemap generator. Prints sitemap to screen.
 
 Created for a quick technical test.
 
-Will grab a pseudo-random Neocities site by default (It's the future of the Interwebs, _make the web fun again_!!!)
+Will grab a pseudo-random Neocities site by default
+(It's the future of the Interwebs, _make the web fun again_!!!)
 
+## Builds
+
+[![CircleCI master Tests](https://circleci.com/gh/dm/techtest-sitemapper/tree/master.svg?style=shield)](https://circleci.com/gh/dm/techtest-sitemapper/tree/master)
 
 ## Easy run
 
@@ -20,10 +24,13 @@ Assumptions:
 
 ## Makefile
 
+Arguments to php script are passed through ENV vars (`URL` and `PAGES`)
+
+ * List all: `make help`
  * Tests (Docker): `make docker-test`
  * Tests: `make test`
- * Run (Docker): `make docker-run URL=https://2bit.neocities.org/`
- * Run: `make run URL=https://2bit.neocities.org/`
+ * Run (Docker): `make docker-run URL=https://2bit.neocities.org/ PAGES=100`
+ * Run: `make run URL=https://2bit.neocities.org/ PAGES=20`
 
 
 ## Implementation
